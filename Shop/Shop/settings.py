@@ -38,7 +38,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'prodects.apps.ProdectsConfig',
+    'rest_framework',
+    'rest_framework_swagger',
+    'drf_yasg',
 ]
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+    
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'max_page_size': 50,
+    'PAGE_SIZE': 10,
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
